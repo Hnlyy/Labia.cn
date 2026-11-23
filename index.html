@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Labia.cn</title>
-  <meta name="description" content="Glume.cn 域名停放页面" />
+  <title>Labia - Exchange</title>
+  <meta name="description" content="Labia.cn domain parked page" />
+   <!-- Bootstrap 的 CSS 文件 -->
+  <link href="https://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
   <style>
     :root {
       --bg: #f6f7fb;
@@ -14,23 +17,31 @@
       --accent: #5b6cff;
       --accent-soft: #eef0ff;
       --border: #e8eaf1;
+      --font-base: "Helvetica Neue", Helvetica, Arial, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --font-en: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after { box-sizing: border-box; }
 
-    html, body { height: 100%; }
+    html, body { min-height: 100%; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
-        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-base);
       background: var(--bg);
       color: var(--text);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 24px 15px;
       position: relative;
-      overflow: hidden;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     body::before,
@@ -59,7 +70,8 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 520px;
+      max-width: 540px;
+      margin: auto;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 24px;
@@ -72,17 +84,21 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-family: var(--font-en);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.14em;
+      white-space: nowrap;
       color: var(--accent);
       background: var(--accent-soft);
-      padding: 6px 12px;
+      padding: 8px 14px;
       border-radius: 999px;
     }
 
     .badge .dot {
-      width: 7px; height: 7px;
+      flex: 0 0 6px;
+      width: 6px; height: 6px;
       border-radius: 50%;
       background: var(--accent);
       animation: pulse 2s infinite;
@@ -94,49 +110,64 @@
     }
 
     .logo {
-      margin-top: 28px;
-      font-size: 40px;
+      margin: 28px 0 0;
+      font-family: var(--font-en);
+      font-size: 46px;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
     }
 
     .logo span { color: var(--accent); }
 
     .title {
-      margin-top: 12px;
-      font-size: 27px;
-      font-weight: 500;
+      margin: 12px 0 0;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.4;
       color: var(--text);
     }
 
     .desc {
-      margin-top: 14px;
+      max-width: 32em;
+      margin: 14px auto 0;
       font-size: 14px;
-      line-height: 1.8;
+      font-weight: 400;
+      line-height: 1.9;
       color: var(--muted);
     }
 
     .divider {
-      margin: 32px 0 24px;
-      height: 1px;
-      background: var(--border);
+      max-width: 280px;
+      height: 0;
+      margin: 30px auto 24px;
+      border-top: 1px solid var(--border);
+      background: none;
     }
 
     .contact {
+      margin: 0;
       font-size: 13px;
+      line-height: 1.8;
       color: var(--muted);
     }
 
     .contact a {
+      font-family: var(--font-en);
       color: var(--accent);
+      letter-spacing: 0.01em;
       text-decoration: none;
+      white-space: nowrap;
     }
 
     .contact a:hover { text-decoration: underline; }
 
     .footer {
-      margin-top: 36px;
-      font-size: 12px;
+      margin: 36px 0 0;
+      font-family: var(--font-en);
+      font-size: 11px;
+      line-height: 1.6;
+      letter-spacing: 0.05em;
       color: #9aa1ae;
     }
 
@@ -144,9 +175,10 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 6px 16px;
-      margin-top: 10px;
+      gap: 4px 16px;
+      margin: 10px 0 0;
       font-size: 12px;
+      line-height: 1.6;
       color: #9aa1ae;
     }
 
@@ -157,25 +189,55 @@
 
     .beian a:hover { color: var(--accent); }
 
+    @media (max-width: 767px) {
+      body { padding: 20px 15px; }
+      .card { padding: 44px 28px 32px; }
+    }
+
     @media (max-width: 480px) {
-      .card { padding: 40px 24px 32px; }
-      .logo { font-size: 32px; }
+      body { padding: 16px 12px; }
+      .card {
+        border-radius: 18px;
+        padding: 36px 20px 28px;
+      }
+      .badge {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+      }
+      .logo {
+        margin-top: 22px;
+        font-size: 34px;
+      }
+      .title { font-size: 20px; }
+      .desc {
+        font-size: 13px;
+        line-height: 1.8;
+      }
+      .divider { margin: 26px auto 20px; }
+      .contact { font-size: 12px; }
+      .beian {
+        gap: 4px 12px;
+        font-size: 11px;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="card">
-    <div class="badge"><span class="dot"></span>DOMAIN PARKED</div>
+  <main class="card container text-center">
+    <div class="badge text-uppercase"><span class="dot"></span></div>
     <h1 class="logo">Labia<span>.cn</span></h1>
-    <p class="title">这个域名正在停放中</p>
-    <p class="desc">网站尚未上线，我们正在为它准备更好的内容。<br />感谢你的耐心等待。</p>
+    <p class="title">正在准备更好的内容</p>
+    <p class="desc lead">私人收藏馆，非公开授权，仅限访问者本人。<br />感谢你的耐心等待。</p>
     <div class="divider"></div>
-    <p class="contact">如有合作或咨询，请联系 <a href="mailto:hello@labia.cn">hello@glume.cn</a></p>
-    <p class="footer">&copy; 2026 Labia.cn. All rights reserved.</p>
-    <div class="beian">
+    <p class="contact text-muted">如有合作或投稿，请联系 <a href="mailto:Master@labia.cn">Master@labia.cn</a></p>
+    <p class="footer small">&copy; 2026 <a href="//www.labia.cn/">Labia.cn</a>. All rights reserved.</p>
+    <div class="beian text-muted">
       <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">京ICP备04000001号-7</a>
       <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11040102700068" target="_blank" rel="noopener noreferrer">京公网安备 11040102700068号</a>
     </div>
   </main>
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
 </html>
+
